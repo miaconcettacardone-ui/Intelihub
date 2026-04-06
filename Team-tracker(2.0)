@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProdLabs — Intelihub</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E8192C;
+    --red-dark: #c0121f;
+    --red-light: #fff0f1;
+    --red-mid: #ffd6d9;
+    --bg: #f5f5f7;
+    --white: #ffffff;
+    --surface: #ffffff;
+    --border: #e5e5ea;
+    --text: #1a1a2e;
+    --muted: #8e8e93;
+    --success: #34c759;
+    --success-bg: #f0fdf4;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Plus Jakarta Sans', sans-serif;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  #login-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #fff 0%, #ffeef0 100%);
+  }
+
+  .login-wrap {
+    display: flex;
+    width: 100%;
+    max-width: 900px;
+    background: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 8px 48px rgba(232,25,44,0.1), 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+    min-height: 520px;
+  }
+
+  .login-left {
+    background: var(--red);
+    padding: 3rem;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .login-left::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .login-left::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .login-brand { position: relative; z-index: 1; }
+  .login-brand-name { font-size: 1.6rem; font-weight: 800; color: #fff; letter-spacing: -0.03em; line-height: 1; }
+  .login-brand-sub { font-size: 0.75rem; color: rgba(255,255,255,0.65); font-family: var(--mono); margin-top: 0.4rem; letter-spacing: 0.05em; }
+
+  .login-tagline {
+    position: relative; z-index: 1;
+    color: rgba(255,255,255,0.9);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+
+  .login-tagline span { color: rgba(255,255,255,0.5); }
+
+  .login-right {
+    padding: 3rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .login-right h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.4rem; }
+  .login-right p { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; }
+
+  label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 0.4rem;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    padding: 0.7rem 1rem;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 1.1rem;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px rgba(232,25,44,0.1);
+    background: #fff;
+  }
+
+  select option { background: #fff; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+
+  .btn-primary { background: var(--red); color: #fff; width: 100%; box-shadow: 0 2px 8px rgba(232,25,44,0.3); }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(232,25,44,0.35); }
+  .btn-sm { padding: 0.45rem 1rem; font-size: 0.82rem; border-radius: 8px; }
+  .btn-outline { background: transparent; border: 1.5px solid var(--border); color: var(--text); }
+  .btn-outline:hover { border-color: var(--red); color: var(--red); }
+  .btn-danger { background: var(--red-light); border: 1.5px solid var(--red-mid); color: var(--red); }
+  .btn-danger:hover { background: var(--red-mid); }
+  .btn-success { background: var(--success-bg); border: 1.5px solid #bbf7d0; color: var(--success); }
+  .btn-success:hover { background: #dcfce7; }
+
+  .error-msg {
+    background: var(--red-light);
+    border: 1.5px solid var(--red-mid);
+    color: var(--red);
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    font-size: 0.83rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  #app { display: none; }
+
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .header-brand { display: flex; align-items: center; gap: 0.75rem; }
+
+  .brand-icon {
+    width: 36px; height: 36px;
+    background: var(--red);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 6px rgba(232,25,44,0.3);
+  }
+
+  .brand-text { font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; }
+  .brand-text span { color: var(--red); }
+  .header-right { display: flex; align-items: center; gap: 1rem; }
+
+  .user-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.83rem;
+    font-weight: 600;
+  }
+
+  .role-tag { font-size: 0.65rem; padding: 0.15rem 0.5rem; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+  .role-admin { background: var(--red-light); color: var(--red); }
+  .role-member { background: #f0fdf4; color: var(--success); }
+
+  nav { display: flex; gap: 0.2rem; }
+
+  .nav-btn {
+    background: none; border: none; color: var(--muted);
+    font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
+    padding: 0.45rem 1rem; border-radius: 8px; cursor: pointer; transition: all 0.15s;
+  }
+
+  .nav-btn:hover { color: var(--text); background: var(--bg); }
+  .nav-btn.active { color: var(--red); background: var(--red-light); }
+
+  main { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+  .page { display: none; }
+  .page.active { display: block; }
+
+  .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.75rem; }
+  .page-title { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.03em; }
+  .page-title span { color: var(--red); }
+
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.75rem; }
+
+  .stat-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 14px;
+    padding: 1.4rem 1.5rem; box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+  }
+
+  .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+  .stat-card.red::before { background: var(--red); }
+  .stat-card.green::before { background: var(--success); }
+  .stat-card.gray::before { background: #c7c7cc; }
+
+  .stat-label { font-size: 0.72rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.6rem; }
+  .stat-value { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+  .stat-card.red .stat-value { color: var(--red); }
+  .stat-card.green .stat-value { color: var(--success); }
+  .stat-card.gray .stat-value { color: var(--text); }
+
+  .card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 1.5rem; }
+
+  .card-header {
+    padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap; background: #fafafa;
+  }
+
+  .card-title { font-weight: 700; font-size: 0.95rem; letter-spacing: -0.01em; }
+  .card-body { padding: 1.5rem; }
+
+  .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+  .field { display: flex; flex-direction: column; }
+  .field label { margin-bottom: 0.4rem; }
+  .field input, .field select { margin-bottom: 0; }
+  .form-actions { margin-top: 1.25rem; display: flex; gap: 0.75rem; align-items: center; }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  th {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+    color: var(--muted); padding: 0.75rem 1.5rem; text-align: left;
+    border-bottom: 1px solid var(--border); background: #fafafa;
+  }
+
+  td { padding: 0.85rem 1.5rem; font-size: 0.83rem; border-bottom: 1px solid var(--border); font-family: var(--mono); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #fafafa; }
+
+  .filters {
+    display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.5rem;
+    background: var(--white); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1rem 1.25rem; box-shadow: var(--shadow-sm); align-items: flex-end;
+  }
+
+  .filters .field { flex: 1; min-width: 140px; max-width: 200px; }
+  .filters input, .filters select { margin-bottom: 0; }
+  .filters label { margin-bottom: 0.3rem; }
+
+  .lb-item { display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .lb-item:hover { background: #fafafa; }
+  .lb-item:last-child { border-bottom: none; }
+  .lb-rank { font-family: var(--mono); font-size: 0.82rem; color: var(--muted); width: 2.5rem; text-align: center; font-weight: 500; }
+  .lb-rank.top { font-size: 1.2rem; }
+  .lb-name { flex: 1; font-weight: 700; font-size: 0.95rem; }
+  .lb-you { font-size: 0.72rem; color: var(--muted); font-weight: 500; margin-left: 0.4rem; }
+  .lb-count { font-family: var(--mono); font-size: 1.1rem; color: var(--red); font-weight: 500; min-width: 60px; text-align: right; }
+  .lb-bar-wrap { width: 140px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .lb-bar { height: 100%; background: linear-gradient(90deg, var(--red), #ff6b7a); border-radius: 3px; transition: width 0.6s cubic-bezier(0.4,0,0.2,1); }
+
+  .list-item { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.5rem; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .list-item:hover { background: #fafafa; }
+  .list-item:last-child { border-bottom: none; }
+  .list-item-info { flex: 1; }
+  .list-item-name { font-weight: 600; font-size: 0.92rem; }
+  .list-item-sub { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; font-family: var(--mono); }
+
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(2px); }
+  .modal-overlay.open { display: flex; }
+
+  .modal { background: var(--white); border-radius: 16px; padding: 2rem; width: 100%; max-width: 420px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); }
+  .modal h3 { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .modal-actions { display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.5rem; }
+
+  .toast { position: fixed; bottom: 2rem; right: 2rem; background: var(--text); color: #fff; border-radius: 10px; padding: 0.8rem 1.25rem; font-size: 0.85rem; font-weight: 600; z-index: 999; transform: translateY(80px); opacity: 0; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { background: var(--success); }
+  .toast.error { background: var(--red); }
+
+  .empty { text-align: center; padding: 3rem; color: var(--muted); font-size: 0.88rem; }
+
+  .syncing { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--muted); font-weight: 500; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); animation: pulse 1.2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  @media (max-width: 640px) {
+    .login-left { display: none; }
+    header { padding: 0 1rem; }
+    main { padding: 1rem; }
+    .nav-btn { padding: 0.4rem 0.6rem; font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-wrap">
+    <div class="login-left">
+      <div class="login-brand">
+        <div class="login-brand-name">ProdLabs</div>
+        <div class="login-brand-sub">by Intelihub</div>
+      </div>
+      <div class="login-tagline">Track what <span>matters.</span> See who's <span>winning.</span></div>
+    </div>
+    <div class="login-right">
+      <h2>Welcome back</h2>
+      <p>Sign in to your team dashboard</p>
+      <div id="login-error" class="error-msg" style="display:none"></div>
+      <label>Username</label>
+      <input type="text" id="login-user" placeholder="Enter your username" autocomplete="username">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="Enter your password" autocomplete="current-password">
+      <button class="btn btn-primary" onclick="doLogin()">Sign In →</button>
+    </div>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="header-brand">
+      <div class="brand-icon">PL</div>
+      <div class="brand-text">Prod<span>Labs</span></div>
+    </div>
+    <nav id="main-nav">
+      <button class="nav-btn active" onclick="showPage('log')" id="nav-log">Log Work</button>
+      <button class="nav-btn" onclick="showPage('my-stats')" id="nav-my-stats">My Stats</button>
+      <button class="nav-btn" onclick="showPage('leaderboard')" id="nav-leaderboard">Leaderboard</button>
+      <button class="nav-btn" onclick="showPage('admin')" id="nav-admin" style="display:none">Admin</button>
+    </nav>
+    <div class="header-right">
+      <div class="user-badge">
+        <span id="header-username">—</span>
+        <span class="role-tag" id="header-role">member</span>
+      </div>
+      <button class="btn btn-sm btn-outline" onclick="doLogout()">Sign out</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="page active" id="page-log">
+      <div class="page-header"><div class="page-title">Log <span>Work</span></div></div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">New Entry</div></div>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="field"><label>Date</label><input type="date" id="log-date"></div>
+            <div class="field"><label>Task Type</label><select id="log-task"><option value="">Select task...</option></select></div>
+            <div class="field"><label>Count / Units</label><input type="number" id="log-count" placeholder="e.g. 42" min="0"></div>
+            <div class="field"><label>Notes (optional)</label><input type="text" id="log-notes" placeholder="anything to add..."></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" style="width:auto" onclick="submitLog()">Submit Entry</button>
+            <span class="syncing" id="sync-indicator" style="display:none"><span class="dot"></span> Saving...</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Recent Entries</div></div>
+        <table><thead><tr><th>Date</th><th>Task</th><th>Count</th><th>Notes</th></tr></thead><tbody id="my-recent-body"></tbody></table>
+      </div>
+    </div>
+
+    <div class="page" id="page-my-stats">
+      <div class="page-header"><div class="page-title">My <span>Stats</span></div></div>
+      <div class="filters">
+        <div class="field"><label>From</label><input type="date" id="stats-from"></div>
+        <div class="field"><label>To</label><input type="date" id="stats-to"></div>
+        <div class="field"><label>Task</label><select id="stats-task"><option value="">All tasks</option></select></div>
+        <button class="btn btn-sm btn-outline" style="align-self:flex-end;margin-bottom:0" onclick="loadMyStats()">Filter</button>
+      </div>
+      <div class="stats-grid" id="my-stats-cards"></div>
+      <div class="card">
+        <div class="card-header"><div class="card-title">Entry Log</div></div>
+        <table><thead><tr><th>Date</th><th>Task</th><th>Count</th><th>Notes</th></tr></thead><tbody id="my-stats-body"></tbody></table>
+      </div>
+    </div>
+
+    <div class="page" id="page-leaderboard">
+      <div class="page-header"><div class="page-title">Leader<span>board</span></div></div>
+      <div class="filters">
+        <div class="field"><label>From</label><input type="date" id="lb-from"></div>
+        <div class="field"><label>To</label><input type="date" id="lb-to"></div>
+        <div class="field"><label>Task</label><select id="lb-task"><option value="">All tasks</option></select></div>
+        <button class="btn btn-sm btn-outline" style="align-self:flex-end;margin-bottom:0" onclick="loadLeaderboard()">Filter</button>
+      </div>
+      <div class="card"><div id="lb-list"></div></div>
+    </div>
+
+    <div class="page" id="page-admin">
+      <div class="page-header"><div class="page-title">Admin <span>Panel</span></div></div>
+      <div class="card" style="margin-bottom:1.5rem">
+        <div class="card-header">
+          <div class="card-title">All Records</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center">
+            <input type="date" id="admin-from" style="margin:0;max-width:150px">
+            <input type="date" id="admin-to" style="margin:0;max-width:150px">
+            <select id="admin-user-filter" style="margin:0;max-width:150px"><option value="">All users</option></select>
+            <select id="admin-task-filter" style="margin:0;max-width:150px"><option value="">All tasks</option></select>
+            <button class="btn btn-sm btn-outline" onclick="loadAdminRecords()">Filter</button>
+            <button class="btn btn-sm btn-success" onclick="refreshAll()">↻ Sync</button>
+          </div>
+        </div>
+        <table><thead><tr><th>Date</th><th>User</th><th>Task</th><th>Count</th><th>Notes</th><th>Actions</th></tr></thead><tbody id="admin-records-body"></tbody></table>
+      </div>
+      <div class="card" style="margin-bottom:1.5rem">
+        <div class="card-header">
+          <div class="card-title">User Management</div>
+          <button class="btn btn-sm btn-primary" onclick="openAddUser()">+ Add User</button>
+        </div>
+        <div id="user-list"></div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Task Types</div>
+          <button class="btn btn-sm btn-primary" onclick="openAddTask()">+ Add Task</button>
+        </div>
+        <div id="task-list"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="modal-overlay" id="modal-add-user">
+  <div class="modal">
+    <h3>Add New User</h3>
+    <label>Username</label><input type="text" id="new-username" placeholder="e.g. sarah">
+    <label>Password</label><input type="password" id="new-password" placeholder="set a password">
+    <label>Role</label>
+    <select id="new-role"><option value="member">Member</option><option value="admin">Admin</option></select>
+    <div class="modal-actions">
+      <button class="btn btn-sm btn-outline" onclick="closeModal('modal-add-user')">Cancel</button>
+      <button class="btn btn-sm btn-primary" onclick="addUser()">Add User</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-add-task">
+  <div class="modal">
+    <h3>Add Task Type</h3>
+    <label>Task Name</label><input type="text" id="new-task-name" placeholder="e.g. Data Entry">
+    <div class="modal-actions">
+      <button class="btn btn-sm btn-outline" onclick="closeModal('modal-add-task')">Cancel</button>
+      <button class="btn btn-sm btn-primary" onclick="addTask()">Add Task</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-edit-record">
+  <div class="modal">
+    <h3>Edit Record</h3>
+    <input type="hidden" id="edit-record-id">
+    <label>Date</label><input type="date" id="edit-date">
+    <label>Task Type</label><select id="edit-task"></select>
+    <label>Count</label><input type="number" id="edit-count" min="0">
+    <label>Notes</label><input type="text" id="edit-notes">
+    <div class="modal-actions">
+      <button class="btn btn-sm btn-outline" onclick="closeModal('modal-edit-record')">Cancel</button>
+      <button class="btn btn-sm btn-primary" onclick="saveEditRecord()">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/a/macros/intelihub.com/s/AKfycbzNxzaM509fHJ9iuTXhgcU4A5L3AFzfDKLmrHFvIZ2B9gesc8OBMaFx0D2Z_WIRcL1sXA/exec";
+
+function getConfig() {
+  const def = { users: [{ username: "admin", password: "admin123", role: "admin" }], tasks: ["Data Entry", "Calls", "Emails", "Follow-ups", "Other"] };
+  try { return JSON.parse(localStorage.getItem("tt_config")) || def; } catch { return def; }
+}
+function saveConfig(cfg) { localStorage.setItem("tt_config", JSON.stringify(cfg)); }
+
+let currentUser = null;
+let allRecords = [];
+
+function doLogin() {
+  const u = document.getElementById("login-user").value.trim().toLowerCase();
+  const p = document.getElementById("login-pass").value;
+  const cfg = getConfig();
+  const user = cfg.users.find(x => x.username.toLowerCase() === u && x.password === p);
+  if (!user) { document.getElementById("login-error").textContent = "Invalid username or password."; document.getElementById("login-error").style.display = "block"; return; }
+  currentUser = user;
+  document.getElementById("login-screen").style.display = "none";
+  document.getElementById("app").style.display = "block";
+  document.getElementById("header-username").textContent = user.username;
+  document.getElementById("header-role").textContent = user.role;
+  document.getElementById("header-role").className = "role-tag role-" + user.role;
+  if (user.role === "admin") document.getElementById("nav-admin").style.display = "";
+  setTodayDate();
+  refreshAll();
+}
+
+function doLogout() {
+  currentUser = null; allRecords = [];
+  document.getElementById("app").style.display = "none";
+  document.getElementById("login-screen").style.display = "flex";
+  document.getElementById("login-user").value = "";
+  document.getElementById("login-pass").value = "";
+  document.getElementById("login-error").style.display = "none";
+  document.getElementById("nav-admin").style.display = "none";
+  showPage("log");
+}
+
+function showPage(id) {
+  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+  document.getElementById("page-" + id).classList.add("active");
+  document.getElementById("nav-" + id).classList.add("active");
+  if (id === "my-stats") loadMyStats();
+  if (id === "leaderboard") loadLeaderboard();
+  if (id === "admin") { loadAdminRecords(); renderUserList(); renderTaskList(); }
+}
+
+async function fetchRecords() {
+  try { const r = await fetch(SCRIPT_URL); allRecords = await r.json(); return allRecords; }
+  catch(e) { showToast("Could not reach Google Sheets.", "error"); return []; }
+}
+
+async function pushRecord(payload) {
+  document.getElementById("sync-indicator").style.display = "inline-flex";
+  try {
+    await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload), headers: { "Content-Type": "application/json" } });
+    await fetchRecords();
+    showToast("Entry saved!", "success");
+  } catch(e) { showToast("Sync failed. Try again.", "error"); }
+  document.getElementById("sync-indicator").style.display = "none";
+}
+
+async function refreshAll() { await fetchRecords(); renderMyRecent(); populateTaskDropdowns(); }
+
+function populateTaskDropdowns() {
+  const tasks = getConfig().tasks;
+  ["log-task","stats-task","lb-task","admin-task-filter","edit-task"].forEach(id => {
+    const el = document.getElementById(id); if (!el) return;
+    const cur = el.value;
+    el.innerHTML = id === "log-task" ? '<option value="">Select task...</option>' : '<option value="">All tasks</option>';
+    tasks.forEach(t => { const o = document.createElement("option"); o.value = t; o.textContent = t; el.appendChild(o); });
+    if (cur) el.value = cur;
+  });
+}
+
+function setTodayDate() { document.getElementById("log-date").value = new Date().toISOString().split("T")[0]; }
+
+async function submitLog() {
+  const date = document.getElementById("log-date").value;
+  const task = document.getElementById("log-task").value;
+  const count = parseInt(document.getElementById("log-count").value);
+  const notes = document.getElementById("log-notes").value.trim();
+  if (!date || !task || isNaN(count) || count < 0) { showToast("Please fill in date, task, and count.", "error"); return; }
+  await pushRecord({ action: "upsert", date, user: currentUser.username, task_type: task, count, notes });
+  document.getElementById("log-count").value = "";
+  document.getElementById("log-notes").value = "";
+  renderMyRecent();
+}
+
+function renderMyRecent() {
+  const body = document.getElementById("my-recent-body");
+  const mine = allRecords.filter(r => r.user === currentUser.username).sort((a,b) => b.date > a.date ? 1 : -1).slice(0,10);
+  if (!mine.length) { body.innerHTML = '<tr><td colspan="4"><div class="empty">No entries yet. Log your first entry above!</div></td></tr>'; return; }
+  body.innerHTML = mine.map(r => `<tr><td>${r.date}</td><td>${r.task_type}</td><td>${r.count}</td><td>${r.notes||'—'}</td></tr>`).join("");
+}
+
+function loadMyStats() {
+  const from = document.getElementById("stats-from").value;
+  const to = document.getElementById("stats-to").value;
+  const task = document.getElementById("stats-task").value;
+  let records = allRecords.filter(r => r.user === currentUser.username);
+  if (from) records = records.filter(r => r.date >= from);
+  if (to) records = records.filter(r => r.date <= to);
+  if (task) records = records.filter(r => r.task_type === task);
+  records.sort((a,b) => b.date > a.date ? 1 : -1);
+  const total = records.reduce((s,r) => s + Number(r.count||0), 0);
+  const days = new Set(records.map(r => r.date)).size;
+  const avg = days ? Math.round(total/days) : 0;
+  document.getElementById("my-stats-cards").innerHTML = `
+    <div class="stat-card red"><div class="stat-label">Total Units</div><div class="stat-value">${total}</div></div>
+    <div class="stat-card green"><div class="stat-label">Days Logged</div><div class="stat-value">${days}</div></div>
+    <div class="stat-card gray"><div class="stat-label">Daily Avg</div><div class="stat-value">${avg}</div></div>`;
+  const body = document.getElementById("my-stats-body");
+  if (!records.length) { body.innerHTML = '<tr><td colspan="4"><div class="empty">No records match filters.</div></td></tr>'; return; }
+  body.innerHTML = records.map(r => `<tr><td>${r.date}</td><td>${r.task_type}</td><td>${r.count}</td><td>${r.notes||'—'}</td></tr>`).join("");
+}
+
+function loadLeaderboard() {
+  const from = document.getElementById("lb-from").value;
+  const to = document.getElementById("lb-to").value;
+  const task = document.getElementById("lb-task").value;
+  let records = [...allRecords];
+  if (from) records = records.filter(r => r.date >= from);
+  if (to) records = records.filter(r => r.date <= to);
+  if (task) records = records.filter(r => r.task_type === task);
+  const totals = {};
+  records.forEach(r => { totals[r.user] = (totals[r.user]||0) + Number(r.count||0); });
+  const sorted = Object.entries(totals).sort((a,b) => b[1]-a[1]);
+  const max = sorted[0]?.[1] || 1;
+  const ranks = ["🥇","🥈","🥉"];
+  const container = document.getElementById("lb-list");
+  if (!sorted.length) { container.innerHTML = '<div class="empty">No data yet.</div>'; return; }
+  container.innerHTML = sorted.map(([user, count], i) => `
+    <div class="lb-item">
+      <div class="lb-rank ${i<3?'top':''}">${i<3?ranks[i]:i+1}</div>
+      <div class="lb-name">${user}${user===currentUser.username?'<span class="lb-you">(you)</span>':''}</div>
+      <div class="lb-bar-wrap"><div class="lb-bar" style="width:${Math.round(count/max*100)}%"></div></div>
+      <div class="lb-count">${count}</div>
+    </div>`).join("");
+}
+
+function loadAdminRecords() {
+  const from = document.getElementById("admin-from").value;
+  const to = document.getElementById("admin-to").value;
+  const user = document.getElementById("admin-user-filter").value;
+  const task = document.getElementById("admin-task-filter").value;
+  const cfg = getConfig();
+  const uf = document.getElementById("admin-user-filter");
+  const curU = uf.value;
+  uf.innerHTML = '<option value="">All users</option>';
+  cfg.users.forEach(u => { const o = document.createElement("option"); o.value = u.username; o.textContent = u.username; uf.appendChild(o); });
+  if (curU) uf.value = curU;
+  let records = [...allRecords];
+  if (from) records = records.filter(r => r.date >= from);
+  if (to) records = records.filter(r => r.date <= to);
+  if (user) records = records.filter(r => r.user === user);
+  if (task) records = records.filter(r => r.task_type === task);
+  records.sort((a,b) => b.date > a.date ? 1 : -1);
+  const body = document.getElementById("admin-records-body");
+  if (!records.length) { body.innerHTML = '<tr><td colspan="6"><div class="empty">No records.</div></td></tr>'; return; }
+  body.innerHTML = records.map(r => `
+    <tr><td>${r.date}</td><td>${r.user}</td><td>${r.task_type}</td><td>${r.count}</td><td>${r.notes||'—'}</td>
+    <td><button class="btn btn-sm btn-outline" onclick="openEditRecord(${allRecords.indexOf(r)})">Edit</button></td></tr>`).join("");
+}
+
+function renderUserList() {
+  const cfg = getConfig();
+  const el = document.getElementById("user-list");
+  if (!cfg.users.length) { el.innerHTML = '<div class="empty">No users.</div>'; return; }
+  el.innerHTML = cfg.users.map((u,i) => `
+    <div class="list-item">
+      <div class="list-item-info"><div class="list-item-name">${u.username}</div><div class="list-item-sub">${u.role}</div></div>
+      <span class="role-tag role-${u.role}">${u.role}</span>
+      ${u.username !== currentUser.username ? `<button class="btn btn-sm btn-danger" onclick="removeUser(${i})">Remove</button>` : '<span style="font-size:0.75rem;color:var(--muted)">(you)</span>'}
+    </div>`).join("");
+}
+
+function openAddUser() { document.getElementById("modal-add-user").classList.add("open"); }
+
+function addUser() {
+  const username = document.getElementById("new-username").value.trim().toLowerCase();
+  const password = document.getElementById("new-password").value;
+  const role = document.getElementById("new-role").value;
+  if (!username || !password) { showToast("Username and password required.", "error"); return; }
+  const cfg = getConfig();
+  if (cfg.users.find(u => u.username === username)) { showToast("Username already exists.", "error"); return; }
+  cfg.users.push({ username, password, role });
+  saveConfig(cfg);
+  closeModal("modal-add-user");
+  document.getElementById("new-username").value = "";
+  document.getElementById("new-password").value = "";
+  renderUserList();
+  showToast("User added!", "success");
+}
+
+function removeUser(i) {
+  const cfg = getConfig();
+  cfg.users.splice(i,1);
+  saveConfig(cfg);
+  renderUserList();
+  showToast("User removed.", "success");
+}
+
+function renderTaskList() {
+  const cfg = getConfig();
+  const el = document.getElementById("task-list");
+  el.innerHTML = cfg.tasks.map((t,i) => `
+    <div class="list-item">
+      <div class="list-item-info"><div class="list-item-name">${t}</div></div>
+      <button class="btn btn-sm btn-danger" onclick="removeTask(${i})">Remove</button>
+    </div>`).join("");
+}
+
+function openAddTask() { document.getElementById("modal-add-task").classList.add("open"); }
+
+function addTask() {
+  const name = document.getElementById("new-task-name").value.trim();
+  if (!name) { showToast("Task name required.", "error"); return; }
+  const cfg = getConfig();
+  if (cfg.tasks.includes(name)) { showToast("Task already exists.", "error"); return; }
+  cfg.tasks.push(name);
+  saveConfig(cfg);
+  closeModal("modal-add-task");
+  document.getElementById("new-task-name").value = "";
+  renderTaskList();
+  populateTaskDropdowns();
+  showToast("Task added!", "success");
+}
+
+function removeTask(i) {
+  const cfg = getConfig();
+  cfg.tasks.splice(i,1);
+  saveConfig(cfg);
+  renderTaskList();
+  populateTaskDropdowns();
+  showToast("Task removed.", "success");
+}
+
+function openEditRecord(idx) {
+  const r = allRecords[idx];
+  document.getElementById("edit-record-id").value = idx;
+  document.getElementById("edit-date").value = r.date;
+  document.getElementById("edit-count").value = r.count;
+  document.getElementById("edit-notes").value = r.notes || "";
+  populateTaskDropdowns();
+  document.getElementById("edit-task").value = r.task_type;
+  document.getElementById("modal-edit-record").classList.add("open");
+}
+
+async function saveEditRecord() {
+  const idx = parseInt(document.getElementById("edit-record-id").value);
+  const r = allRecords[idx];
+  const payload = { action: "upsert", date: document.getElementById("edit-date").value, user: r.user, task_type: document.getElementById("edit-task").value, count: parseInt(document.getElementById("edit-count").value), notes: document.getElementById("edit-notes").value };
+  closeModal("modal-edit-record");
+  await pushRecord(payload);
+  loadAdminRecords();
+}
+
+function closeModal(id) { document.getElementById(id).classList.remove("open"); }
+
+function showToast(msg, type="success") {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.className = "toast show " + type;
+  setTimeout(() => { t.className = "toast"; }, 3000);
+}
+
+document.addEventListener("keydown", e => { if (e.key === "Enter" && document.getElementById("login-screen").style.display !== "none") doLogin(); });
+document.querySelectorAll(".modal-overlay").forEach(o => { o.addEventListener("click", e => { if (e.target === o) o.classList.remove("open"); }); });
+
+populateTaskDropdowns();
+</script>
+</body>
+</html>
