@@ -178,30 +178,30 @@ tbody tr:hover td{background:var(--bg)}
       <div class="metrics" id="metrics"></div>
 
       <div class="cgrid">
-        <div class="card"><div class="ch"><span class="ct">Claims over time</span><div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-period-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div><div class="seg"><button class="segb on" onclick="setMode('day',this)">D</button><button class="segb" onclick="setMode('week',this)">W</button><button class="segb" onclick="setMode('month',this)">M</button></div></div></div><div class="cw" style="height:260px"><canvas id="cht"></canvas></div></div>
-        <div class="card"><div class="ch"><span class="ct">Amount over time</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-period-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:260px"><canvas id="chamt"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">Claims over time</span><div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-cht" onchange="renderChartById('cht')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-cht" onchange="renderChartById('cht')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div><div class="seg"><button class="segb on" onclick="setMode('day',this)">D</button><button class="segb" onclick="setMode('week',this)">W</button><button class="segb" onclick="setMode('month',this)">M</button></div></div></div><div class="cw" style="height:260px"><canvas id="cht"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">Amount over time</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chamt" onchange="renderChartById('chamt')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chamt" onchange="renderChartById('chamt')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:260px"><canvas id="chamt"></canvas></div></div>
       </div>
 
       <div class="cgrid">
-        <div class="card"><div class="ch"><span class="ct">By role</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chro" onchange="renderChartById('chro')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-period-chro" onchange="renderChartById('chro')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:240px"><canvas id="chro"></canvas></div></div>
-        <div class="card"><div class="ch"><span class="ct">By client</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All roles</option></select> <select id="ct-period-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:240px"><canvas id="chcl"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By role</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chro" onchange="renderChartById('chro')" class="ch-sel"><option value="">All teams</option></select> <input type="date" id="ct-from-chro" onchange="renderChartById('chro')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chro" onchange="renderChartById('chro')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chro"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By client</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chcl" onchange="renderChartById('chcl')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chcl" onchange="renderChartById('chcl')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chcl"></canvas></div></div>
       </div>
 
       <div class="cgrid">
-        <div class="card"><div class="ch"><span class="ct">By action taken</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All roles</option></select> <select id="ct-period-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:220px"><canvas id="chact"></canvas></div></div>
-        <div class="card"><div class="ch"><span class="ct">By payer</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All roles</option></select> <select id="ct-period-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:220px"><canvas id="chpay"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By action taken</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chact" onchange="renderChartById('chact')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chact" onchange="renderChartById('chact')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chact"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By payer</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chpay" onchange="renderChartById('chpay')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chpay" onchange="renderChartById('chpay')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chpay"></canvas></div></div>
       </div>
 
       <!-- Admin team charts -->
       <div id="team-charts" style="display:none">
         <div class="cgrid3">
-          <div class="card"><div class="ch"><span class="ct">Claims by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-period-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:240px"><canvas id="chusr"></canvas></div></div>
-          <div class="card"><div class="ch"><span class="ct">Claim Worth by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-period-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:240px"><canvas id="churev"></canvas></div></div>
-          <div class="card"><div class="ch"><span class="ct">Claims by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteam" onchange="renderChartById('chteam')" class="ch-sel"><option value="">All roles</option></select> <select id="ct-period-chteam" onchange="renderChartById('chteam')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:240px"><canvas id="chteam"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claims by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chusr" onchange="renderChartById('chusr')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chusr" onchange="renderChartById('chusr')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chusr"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claim Worth by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-churev" onchange="renderChartById('churev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-churev" onchange="renderChartById('churev')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="churev"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claims by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteam" onchange="renderChartById('chteam')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chteam" onchange="renderChartById('chteam')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chteam" onchange="renderChartById('chteam')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chteam"></canvas></div></div>
         </div>
         <div class="cgrid">
-          <div class="card"><div class="ch"><span class="ct">Avg claims/day per employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-period-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:220px"><canvas id="chavg"></canvas></div></div>
-          <div class="card"><div class="ch"><span class="ct">Claim Worth by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel"><option value="">All roles</option></select> <select id="ct-period-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel"><option value="all">All time</option><option value="week">Week</option><option value="month">Month</option></select></div></div><div class="cw" style="height:220px"><canvas id="chteamrev"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Avg claims/day per employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chavg" onchange="renderChartById('chavg')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chavg" onchange="renderChartById('chavg')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chavg"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claim Worth by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chteamrev"></canvas></div></div>
         </div>
       </div>
 
@@ -389,11 +389,6 @@ tbody tr:hover td{background:var(--bg)}
         </div>
         <div id="goals-matrix" style="overflow-x:auto;padding:1rem"></div>
       </div>
-      <div class="card" style="margin-bottom:1.5rem">
-        <div class="ch"><span class="ct">Member Experience Assignments</span></div>
-        <div id="member-level-list"></div>
-      </div>
-
       <!-- Teams + Roles row -->
       <div class="cgrid">
         <div>
@@ -482,6 +477,8 @@ tbody tr:hover td{background:var(--bg)}
     <input type="text" id="ea-display" placeholder="e.g. John Smith">
     <label>Username</label>
     <input type="text" id="ea-user" placeholder="e.g. jsmith">
+    <label>Default Team on Login <span style="font-size:11px;color:var(--i3);font-weight:400">(auto-filters to this team)</span></label>
+    <select id="ea-team"><option value="">All teams (no auto-filter)</option></select>
     <label>New Password (leave blank to keep current)</label>
     <div style="position:relative;margin-bottom:12px">
       <input type="password" id="ea-pass" placeholder="leave blank to keep" style="width:100%;padding:9px 40px 9px 12px;border:1.5px solid var(--bor);border-radius:var(--r);font-family:inherit;font-size:14px;color:var(--ink);background:var(--sur);outline:none;margin-bottom:0">
@@ -585,6 +582,23 @@ tbody tr:hover td{background:var(--bg)}
       <button onclick="closeGoalDetail()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center">×</button>
     </div>
     <div id="goal-detail-body" style="padding:1.5rem"></div>
+  </div>
+</div>
+
+<!-- MEMBER PROFILE OVERLAY -->
+<div id="member-profile-overlay" style="display:none;position:fixed;inset:0;background:rgba(22,21,26,.65);z-index:500;overflow-y:auto;padding:1.5rem;backdrop-filter:blur(4px)">
+  <div style="max-width:760px;margin:0 auto;background:var(--sur);border-radius:var(--rl);box-shadow:0 24px 80px rgba(0,0,0,.25);overflow:hidden">
+    <div style="background:var(--ink);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div id="mp-avatar" style="width:44px;height:44px;border-radius:50%;background:var(--re);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;flex-shrink:0"></div>
+        <div>
+          <div id="mp-name" style="font-size:18px;font-weight:800;color:#fff"></div>
+          <div id="mp-meta" style="font-size:12px;color:rgba(255,255,255,.5);margin-top:2px"></div>
+        </div>
+      </div>
+      <button onclick="closeMemberProfile()" style="background:rgba(255,255,255,.12);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center">×</button>
+    </div>
+    <div id="mp-body" style="padding:1.5rem"></div>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -849,15 +863,16 @@ function getChartData(chartId){
   let d=ISADM?[...DATA]:DATA.filter(r=>r.user===CU_NAME);
   const teamEl=document.getElementById('ct-team-'+chartId);
   const roleEl=document.getElementById('ct-role-'+chartId);
-  const periodEl=document.getElementById('ct-period-'+chartId);
+  const fromEl=document.getElementById('ct-from-'+chartId);
+  const toEl=document.getElementById('ct-to-'+chartId);
   const team=teamEl?teamEl.value:'';
   const role=roleEl?roleEl.value:'';
-  const period=periodEl?periodEl.value:'all';
+  const from=fromEl?fromEl.value:'';
+  const to=toEl?toEl.value:'';
   if(team)d=d.filter(r=>getUserTeam(r.user)===team);
   if(role)d=d.filter(r=>r.role===role);
-  if(period==='today'){const t=new Date().toISOString().slice(0,10);d=d.filter(r=>r.date===t);}
-  else if(period==='week'){const mn=new Date();mn.setDate(mn.getDate()-((mn.getDay()+6)%7));d=d.filter(r=>r.date>=mn.toISOString().slice(0,10));}
-  else if(period==='month'){const m=new Date().toISOString().slice(0,7);d=d.filter(r=>r.date.startsWith(m));}
+  if(from)d=d.filter(r=>r.date>=from);
+  if(to)d=d.filter(r=>r.date<=to);
   return d;
 }
 
@@ -1252,7 +1267,8 @@ function renderUserList(){
   document.getElementById('user-list').innerHTML=slice.length
     ?slice.map(m=>{
       const i=cfg.members.indexOf(m);
-      return`<div class="urow">
+      const _mi=cfg.members.indexOf(m);
+      return`<div class="urow" style="cursor:pointer" onclick="openMemberProfile(${i})">
         <div style="width:30px;height:30px;border-radius:50%;background:var(--reld);color:var(--redk);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">${m.name.slice(0,2).toUpperCase()}</div>
         <div style="flex:1">
           <div class="uname">${m.name}</div>
@@ -1383,6 +1399,8 @@ function openEditAdmin(i){
   document.getElementById('ea-display').value=a.display||'';
   document.getElementById('ea-user').value=a.username;
   document.getElementById('ea-pass').value='';
+  const et=document.getElementById('ea-team');
+  if(et){et.innerHTML='<option value="">All teams (no auto-filter)</option>'+cfg.teams.map(t=>`<option value="${t}"${a.defaultTeam===t?' selected':''}>${t}</option>`).join('');}
   openModal('modal-edit-admin');
 }
 
@@ -1396,6 +1414,8 @@ async function saveEditAdmin(){
   if(cfg.admins.find((x,xi)=>xi!==i&&x.username===username)||cfg.members.find(m=>m.username===username)){toast('Username already taken','tbad');return;}
   a.display=display||username;a.username=username;
   if(np)a.password=np;
+  const et=document.getElementById('ea-team');
+  if(et)a.defaultTeam=et.value||undefined;
   await saveCfg(cfg);closeModal('modal-edit-admin');
   renderAdminList();toast('Admin updated!','tgood');
 }
@@ -1514,6 +1534,7 @@ async function saveGoals(){
 function openGoalsSettings(){
   const cfg=getCfg();
   const goals=cfg.goals||{};
+  const matrix=cfg.goalsMatrix||{};
   const allRoles=getAllRoles();
   document.getElementById('goals-form').innerHTML=allRoles.map(r=>`
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
@@ -1705,22 +1726,24 @@ function renderGoals(){
   }
 }
 
-// Goal lookup: per-member override → goalsMatrix → flat goals
+// Goal lookup: per-member override → goalsMatrix (level+role) → flat goals (role) → first configured goal
 function getUserDailyGoal(name,goals,matrix,userRecords){
   const cfg=getCfg();
   const member=cfg.members.find(m=>m.name===name);
   if(member&&member.goalOverride>0)return member.goalOverride;
   const level=member?member.level||'':'';
+  // Build role list: from actual records first, then fall back to all configured roles
   const roleCounts={};
   userRecords.forEach(r=>{if(r.role)roleCounts[r.role]=(roleCounts[r.role]||0)+1;});
-  const sortedRoles=Object.entries(roleCounts).sort((a,b)=>b[1]-a[1]);
-  for(const [role] of sortedRoles){
-    // Matrix lookup: level + role
+  const recordRoles=Object.entries(roleCounts).sort((a,b)=>b[1]-a[1]).map(([r])=>r);
+  const allRoles=[...new Set([...recordRoles,...(cfg.roles||[])])];
+  for(const role of allRoles){
     if(level&&matrix[level]&&matrix[level][role])return matrix[level][role];
-    // Flat goal fallback
     if(goals[role])return goals[role];
   }
-  return 0;
+  // Last resort: return the first non-zero goal value configured
+  const firstGoal=Object.values(goals).find(v=>v>0);
+  return firstGoal||0;
 }
 
 // ── IMPORT HISTORY ────────────────────────────────────────────
@@ -1871,6 +1894,122 @@ function toggleEye(id){
   el.type=el.type==='password'?'text':'password';
 }
 
+
+
+// ── MEMBER PROFILE OVERLAY ────────────────────────────────────
+function openMemberProfile(idx){
+  const cfg=getCfg();
+  const m=cfg.members[idx];
+  if(!m)return;
+  const goals=cfg.goals||{};
+  const matrix=cfg.goalsMatrix||{};
+  const levels=cfg.levels||[];
+  const allRoles=getAllRoles();
+  const ini=m.name.replace(/\./g,' ').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  document.getElementById('mp-avatar').textContent=ini;
+  document.getElementById('mp-name').textContent=m.name;
+  document.getElementById('mp-meta').textContent=`${m.team||'No team'} · @${m.username} · ${m.tracked===false||m.tracked==='no'?'Not tracked':'Tracked'}`;
+
+  // Role goals for this member (based on their level + each role)
+  const roleRows=allRoles.map(role=>{
+    const matrixGoal=m.level&&matrix[m.level]?matrix[m.level][role]||0:0;
+    const flatGoal=goals[role]||0;
+    const effectiveGoal=matrixGoal||flatGoal;
+    return`<tr>
+      <td style="padding:8px 12px;border-bottom:1px solid var(--bor);font-weight:600">${role}</td>
+      <td style="padding:8px 12px;border-bottom:1px solid var(--bor);text-align:center">
+        <input type="number" min="0" value="${matrixGoal}" data-midx="${idx}" data-level="${m.level||''}" data-role="${role}"
+          onchange="updateMemberRoleGoal(this)"
+          style="width:64px;padding:5px;border:1.5px solid var(--bor);border-radius:6px;font-size:12px;text-align:center;font-family:inherit;outline:none">
+      </td>
+      <td style="padding:8px 12px;border-bottom:1px solid var(--bor);text-align:center;color:var(--i3)">${flatGoal||'—'}</td>
+      <td style="padding:8px 12px;border-bottom:1px solid var(--bor);text-align:center;font-weight:700;color:${effectiveGoal?'var(--pu)':'var(--i3)'}">${effectiveGoal||'—'}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('mp-body').innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--i3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Team</div>
+        <select onchange="updateMemberField(${idx},'team',this.value)" style="width:100%;padding:8px 10px;border:1.5px solid var(--bor);border-radius:var(--r);font-size:13px;font-family:inherit;outline:none">
+          <option value="">No team</option>
+          ${cfg.teams.map(t=>`<option value="${t}"${m.team===t?' selected':''}>${t}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--i3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Experience Level</div>
+        <select onchange="updateMemberField(${idx},'level',this.value)" style="width:100%;padding:8px 10px;border:1.5px solid var(--bor);border-radius:var(--r);font-size:13px;font-family:inherit;outline:none">
+          <option value="">No level</option>
+          ${levels.map(l=>`<option value="${l}"${m.level===l?' selected':''}>${l}</option>`).join('')}
+        </select>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--i3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Daily Goal Override</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <input type="number" min="0" value="${m.goalOverride||0}" onchange="updateMemberField(${idx},'goalOverride',parseInt(this.value)||0)"
+            style="width:80px;padding:8px 10px;border:1.5px solid var(--bor);border-radius:var(--r);font-size:13px;font-family:inherit;outline:none">
+          <span style="font-size:11px;color:var(--i3)">claims/day (0 = use level/role default)</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:var(--i3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Leaderboard</div>
+        <select onchange="updateMemberField(${idx},'tracked',this.value==='yes')" style="width:100%;padding:8px 10px;border:1.5px solid var(--bor);border-radius:var(--r);font-size:13px;font-family:inherit;outline:none">
+          <option value="yes"${m.tracked!==false&&m.tracked!=='no'?' selected':''}>Tracked</option>
+          <option value="no"${m.tracked===false||m.tracked==='no'?' selected':''}>Not tracked</option>
+        </select>
+      </div>
+    </div>
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:11px;font-weight:700;color:var(--i3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Credentials / Notes</div>
+      <input type="text" value="${m.cred||''}" placeholder="e.g. CPC, RHIT, or any notes..." onchange="updateMemberField(${idx},'cred',this.value)"
+        style="width:100%;padding:9px 12px;border:1.5px solid var(--bor);border-radius:var(--r);font-size:13px;font-family:inherit;outline:none">
+    </div>
+    <div class="card">
+      <div class="ch"><span class="ct">Goals per Role</span><span style="font-size:11px;color:var(--i3)">level override → flat default → effective</span></div>
+      <div style="overflow-x:auto">
+        <table style="font-size:13px">
+          <thead><tr>
+            <th>Role</th>
+            <th style="text-align:center">Level Goal<br><span style="font-size:10px;font-weight:400">(edit per level)</span></th>
+            <th style="text-align:center">Flat Default</th>
+            <th style="text-align:center">Effective</th>
+          </tr></thead>
+          <tbody>${roleRows}</tbody>
+        </table>
+      </div>
+    </div>
+  `;
+  const ov=document.getElementById('member-profile-overlay');
+  ov.style.display='block';
+  document.body.style.overflow='hidden';
+  ov.onclick=function(e){if(e.target===ov)closeMemberProfile();};
+}
+
+async function updateMemberField(idx,field,value){
+  const cfg=getCfg();
+  cfg.members[idx][field]=value;
+  await saveCfg(cfg);
+  toast('Saved','tgood');
+}
+
+async function updateMemberRoleGoal(inp){
+  const cfg=getCfg();
+  const level=inp.dataset.level;
+  const role=inp.dataset.role;
+  const val=parseInt(inp.value)||0;
+  if(!level){toast('Assign a level to this member first','tbad');inp.value=0;return;}
+  if(!cfg.goalsMatrix)cfg.goalsMatrix={};
+  if(!cfg.goalsMatrix[level])cfg.goalsMatrix[level]={};
+  cfg.goalsMatrix[level][role]=val;
+  await saveCfg(cfg);
+  toast('Goal saved','tgood');
+}
+
+function closeMemberProfile(){
+  document.getElementById('member-profile-overlay').style.display='none';
+  document.body.style.overflow='';
+  renderUserList();
+}
 
 // ── GOAL DETAIL OVERLAY ───────────────────────────────────────
 function openGoalDetail(memberName){
