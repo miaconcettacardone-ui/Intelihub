@@ -178,30 +178,30 @@ tbody tr:hover td{background:var(--bg)}
       <div class="metrics" id="metrics"></div>
 
       <div class="cgrid">
-        <div class="card"><div class="ch"><span class="ct">Claims over time</span><div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-cht" onchange="renderChartById('cht')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-cht" onchange="renderChartById('cht')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div><div class="seg"><button class="segb on" onclick="setMode('day',this)">D</button><button class="segb" onclick="setMode('week',this)">W</button><button class="segb" onclick="setMode('month',this)">M</button></div></div></div><div class="cw" style="height:260px"><canvas id="cht"></canvas></div></div>
-        <div class="card"><div class="ch"><span class="ct">Amount over time</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chamt" onchange="renderChartById('chamt')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chamt" onchange="renderChartById('chamt')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:260px"><canvas id="chamt"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">Claims over time</span><div style="display:flex;gap:5px;align-items:center;flex-wrap:wrap"><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-cht" onchange="renderChartById('cht')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-cht" onchange="renderChartById('cht')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-cht" onchange="renderChartById('cht')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('cht')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div></div><div class="cw" style="height:260px"><canvas id="cht"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">Amount over time</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chamt" onchange="renderChartById('chamt')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chamt" onchange="renderChartById('chamt')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chamt" onchange="renderChartById('chamt')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chamt')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:260px"><canvas id="chamt"></canvas></div></div>
       </div>
 
       <div class="cgrid">
-        <div class="card"><div class="ch"><span class="ct">By role</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chro" onchange="renderChartById('chro')" class="ch-sel"><option value="">All teams</option></select> <input type="date" id="ct-from-chro" onchange="renderChartById('chro')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chro" onchange="renderChartById('chro')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chro"></canvas></div></div>
-        <div class="card"><div class="ch"><span class="ct">By client</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chcl" onchange="renderChartById('chcl')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chcl" onchange="renderChartById('chcl')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chcl"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By role</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chro" onchange="renderChartById('chro')" class="ch-sel"><option value="">All teams</option></select> <input type="date" id="ct-from-chro" onchange="renderChartById('chro')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chro" onchange="renderChartById('chro')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chro')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:240px"><canvas id="chro"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By client</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chcl" onchange="renderChartById('chcl')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chcl" onchange="renderChartById('chcl')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chcl" onchange="renderChartById('chcl')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chcl')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:240px"><canvas id="chcl"></canvas></div></div>
       </div>
 
       <div class="cgrid">
-        <div class="card"><div class="ch"><span class="ct">By action taken</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chact" onchange="renderChartById('chact')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chact" onchange="renderChartById('chact')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chact"></canvas></div></div>
-        <div class="card"><div class="ch"><span class="ct">By payer</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chpay" onchange="renderChartById('chpay')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chpay" onchange="renderChartById('chpay')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chpay"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By action taken</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chact" onchange="renderChartById('chact')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chact" onchange="renderChartById('chact')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chact" onchange="renderChartById('chact')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chact')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:220px"><canvas id="chact"></canvas></div></div>
+        <div class="card"><div class="ch"><span class="ct">By payer</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chpay" onchange="renderChartById('chpay')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chpay" onchange="renderChartById('chpay')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chpay" onchange="renderChartById('chpay')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chpay')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:220px"><canvas id="chpay"></canvas></div></div>
       </div>
 
       <!-- Admin team charts -->
       <div id="team-charts" style="display:none">
         <div class="cgrid3">
-          <div class="card"><div class="ch"><span class="ct">Claims by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chusr" onchange="renderChartById('chusr')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chusr" onchange="renderChartById('chusr')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chusr"></canvas></div></div>
-          <div class="card"><div class="ch"><span class="ct">Claim Worth by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-churev" onchange="renderChartById('churev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-churev" onchange="renderChartById('churev')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="churev"></canvas></div></div>
-          <div class="card"><div class="ch"><span class="ct">Claims by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteam" onchange="renderChartById('chteam')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chteam" onchange="renderChartById('chteam')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chteam" onchange="renderChartById('chteam')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:240px"><canvas id="chteam"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claims by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chusr" onchange="renderChartById('chusr')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chusr" onchange="renderChartById('chusr')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chusr" onchange="renderChartById('chusr')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chusr')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:240px"><canvas id="chusr"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claim Worth by employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-churev" onchange="renderChartById('churev')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-churev" onchange="renderChartById('churev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-churev" onchange="renderChartById('churev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('churev')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:240px"><canvas id="churev"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claims by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteam" onchange="renderChartById('chteam')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chteam" onchange="renderChartById('chteam')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chteam" onchange="renderChartById('chteam')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chteam')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:240px"><canvas id="chteam"></canvas></div></div>
         </div>
         <div class="cgrid">
-          <div class="card"><div class="ch"><span class="ct">Avg claims/day per employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chavg" onchange="renderChartById('chavg')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chavg" onchange="renderChartById('chavg')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chavg"></canvas></div></div>
-          <div class="card"><div class="ch"><span class="ct">Claim Worth by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel" style="font-size:11px;padding:4px 6px"></div></div><div class="cw" style="height:220px"><canvas id="chteamrev"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Avg claims/day per employee</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-team-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All teams</option></select> <select id="ct-role-chavg" onchange="renderChartById('chavg')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chavg" onchange="renderChartById('chavg')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chavg" onchange="renderChartById('chavg')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chavg')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:220px"><canvas id="chavg"></canvas></div></div>
+          <div class="card"><div class="ch"><span class="ct">Claim Worth by team</span><div style="display:flex;gap:5px;flex-wrap:wrap"><select id="ct-role-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel"><option value="">All roles</option></select> <input type="date" id="ct-from-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <input type="date" id="ct-to-chteamrev" onchange="renderChartById('chteamrev')" class="ch-sel" style="font-size:11px;padding:4px 6px"> <button onclick="clearChartFilter('chteamrev')" class="btny" style="font-size:11px;padding:3px 8px">✕</button></div></div><div class="cw" style="height:220px"><canvas id="chteamrev"></canvas></div></div>
         </div>
       </div>
 
@@ -773,7 +773,7 @@ async function goTab(t){
   ['dashboard','import','goals','history','settings'].forEach(id=>document.getElementById('tab-'+id).style.display=id===t?'':'none');
   document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('on',b.getAttribute('onclick').includes("'"+t+"'")));
   if(t==='settings')renderSettingsTab();
-  if(t==='goals')renderGoals();
+  if(t==='goals'){loadCfg().then(()=>{buildFilters();renderGoals();});}
   if(t==='import')renderImportHistory();
   if(t==='history')renderHistory();
 }
@@ -876,6 +876,18 @@ function getChartData(chartId){
   return d;
 }
 
+
+function clearChartFilter(chartId){
+  const fromEl=document.getElementById('ct-from-'+chartId);
+  const toEl=document.getElementById('ct-to-'+chartId);
+  const teamEl=document.getElementById('ct-team-'+chartId);
+  const roleEl=document.getElementById('ct-role-'+chartId);
+  if(fromEl)fromEl.value='';
+  if(toEl)toEl.value='';
+  if(teamEl)teamEl.value='';
+  if(roleEl)roleEl.value='';
+  renderChartById(chartId);
+}
 function renderChartById(id){renderCharts(getF());}
 
 let _applyTimer=null;
@@ -944,9 +956,17 @@ function renderCharts(d){
   const dCht=getChartData('cht'),dChamt=getChartData('chamt'),dChro=getChartData('chro'),dChcl=getChartData('chcl');
   const dChact=getChartData('chact'),dChpay=getChartData('chpay');
 
-  const g=groupByMode(dCht,MODE);const labels=Object.keys(g).sort();
+  const _chtFrom=document.getElementById('ct-from-cht')?document.getElementById('ct-from-cht').value:'';
+  const _chtTo=document.getElementById('ct-to-cht')?document.getElementById('ct-to-cht').value:'';
+  const _chtDays=_chtFrom&&_chtTo?Math.round((new Date(_chtTo)-new Date(_chtFrom))/(86400000)):dCht.length>0?30:30;
+  const _chtMode=_chtDays>90?'month':_chtDays>21?'week':'day';
+  const g=groupByMode(dCht,_chtMode);const labels=Object.keys(g).sort();
   new Chart(fc('cht'),{type:'bar',data:{labels,datasets:[{data:labels.map(l=>g[l].claims),backgroundColor:'#E8192C',borderRadius:4,barPercentage:.7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#a09c96',font:{size:10},maxTicksLimit:14,autoSkip:true,maxRotation:45}},y:{grid:{color:'#eeecea'},ticks:{color:'#a09c96',font:{size:10}},beginAtZero:true}}}});
-  const gAmt=groupByMode(dChamt,MODE);const labelsAmt=Object.keys(gAmt).sort();
+  const _amtFrom=document.getElementById('ct-from-chamt')?document.getElementById('ct-from-chamt').value:'';
+  const _amtTo=document.getElementById('ct-to-chamt')?document.getElementById('ct-to-chamt').value:'';
+  const _amtDays=_amtFrom&&_amtTo?Math.round((new Date(_amtTo)-new Date(_amtFrom))/(86400000)):30;
+  const _amtMode=_amtDays>90?'month':_amtDays>21?'week':'day';
+  const gAmt=groupByMode(dChamt,_amtMode);const labelsAmt=Object.keys(gAmt).sort();
   new Chart(fc('chamt'),{type:'line',data:{labels:labelsAmt,datasets:[{data:labelsAmt.map(l=>gAmt[l].amount),borderColor:'#475569',backgroundColor:'rgba(71,85,105,.07)',tension:.3,fill:true,pointRadius:3,pointBackgroundColor:'#475569'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#a09c96',font:{size:10},maxTicksLimit:14,autoSkip:true,maxRotation:45}},y:{grid:{color:'#eeecea'},ticks:{color:'#a09c96',font:{size:10},callback:v=>'$'+v.toLocaleString()},beginAtZero:true}}}});
 
   const rg={};dChro.forEach(r=>{if(r.role)rg[r.role]=(rg[r.role]||0)+1;});const rl=Object.keys(rg).sort((a,b)=>rg[b]-rg[a]);
@@ -1871,7 +1891,7 @@ async function updateGoalMatrix(inp){
 }
 
 function renderMemberLevelList(){
-  const cfg=getCfg();const levels=cfg.levels||[];const el=document.getElementById('member-level-list');if(!el)return;
+  const cfg=getCfg();const levels=cfg.levels||[];const el=document.getElementById('member-level-list');if(!el)return; // element removed from settings
   if(!levels.length){el.innerHTML='<div style="padding:1rem;color:var(--i3);font-size:13px;text-align:center">Add experience levels first</div>';return;}
   el.innerHTML=cfg.members.map((m,i)=>`
     <div class="urow">
@@ -1918,9 +1938,7 @@ function openMemberProfile(idx){
     return`<tr>
       <td style="padding:8px 12px;border-bottom:1px solid var(--bor);font-weight:600">${role}</td>
       <td style="padding:8px 12px;border-bottom:1px solid var(--bor);text-align:center">
-        <input type="number" min="0" value="${matrixGoal}" data-midx="${idx}" data-level="${m.level||''}" data-role="${role}"
-          onchange="updateMemberRoleGoal(this)"
-          style="width:64px;padding:5px;border:1.5px solid var(--bor);border-radius:6px;font-size:12px;text-align:center;font-family:inherit;outline:none">
+        <span style="font-weight:700;color:${matrixGoal?'var(--pu)':'var(--i3)'}">${matrixGoal||'—'}</span>
       </td>
       <td style="padding:8px 12px;border-bottom:1px solid var(--bor);text-align:center;color:var(--i3)">${flatGoal||'—'}</td>
       <td style="padding:8px 12px;border-bottom:1px solid var(--bor);text-align:center;font-weight:700;color:${effectiveGoal?'var(--pu)':'var(--i3)'}">${effectiveGoal||'—'}</td>
@@ -1993,16 +2011,10 @@ async function updateMemberField(idx,field,value){
 }
 
 async function updateMemberRoleGoal(inp){
-  const cfg=getCfg();
-  const level=inp.dataset.level;
-  const role=inp.dataset.role;
-  const val=parseInt(inp.value)||0;
-  if(!level){toast('Assign a level to this member first','tbad');inp.value=0;return;}
-  if(!cfg.goalsMatrix)cfg.goalsMatrix={};
-  if(!cfg.goalsMatrix[level])cfg.goalsMatrix[level]={};
-  cfg.goalsMatrix[level][role]=val;
-  await saveCfg(cfg);
-  toast('Goal saved','tgood');
+  // Goals per level/role are baseline — edit them in Settings > Goals per Level & Role
+  // This is read-only in the member profile
+  inp.value=parseInt(inp.dataset.original)||0;
+  toast('Edit baseline goals in Settings → Goals per Level & Role','tok');
 }
 
 function closeMemberProfile(){
